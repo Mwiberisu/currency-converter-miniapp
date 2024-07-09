@@ -1,0 +1,11 @@
+.first-index {
+  background-color: #12c9e2;
+}
+
+.ant-list-item {
+  word-spacing: 60px;
+}
+
+.ant-list {
+  margin: 10%;
+}

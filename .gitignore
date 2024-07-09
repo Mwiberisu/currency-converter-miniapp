@@ -1,3 +1,4 @@
 .tea/
 node_modules/
 .env
+rates.json

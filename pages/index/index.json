@@ -1,1 +1,7 @@
-{}
+{
+  "usingComponents": {
+    "ant-list": "antd-mini/es/List/index",
+    "ant-list-item": "antd-mini/es/List/ListItem/index"
+
+  }
+}
