@@ -1,3 +1,19 @@
 <view>
-  this is a blank page
+  <ant-list header="Other Exchange Rates" radius="{{ radius }}">
+    <view a:for="{{ exchangeRates }}">
+      <view a:if="{{ index == 0 }}">
+        <ant-list-item image="UnorderedListOutline" arrow="right" class="first-index">
+          {{item.name}}
+          {{item.value}}
+        </ant-list-item>
+      </view>
+      <view a:else>
+        <ant-list-item image="UnorderedListOutline" arrow="right">
+          {{item.name}} {{item.value}}
+        </ant-list-item>
+      </view>
+    </view>
+
+  </ant-list>
+
 </view>
