@@ -15,6 +15,8 @@ Page({
   onReady() {
     // Page loading is complete
     this.getCurrencyExchangeRates();
+    this.convertCurrencyRates("USD","KES" )
+    this.getSupportedCodes()
   },
   onShow() {
     // Page display
@@ -89,5 +91,72 @@ Page({
 
     });
 
-  }
+  },
+
+  // handle the currency converter base and target
+  async convertCurrencyRates(baseCurrency, targetCurrency){
+    my.request({
+      url: `${BASE_URL}convert?base=${baseCurrency}&target=${targetCurrency}`,
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'x-rapidapi-key': RAPIDAPI_KEY
+    },
+    success: async (res) => {
+      const resData = res.data
+      if(resData.code == 0){
+        const covertResult = resData.convert_result
+        this.setData({
+          convertCurrencyRates: covertResult
+        })
+      }else{
+        my.alert({
+          title: 'Error',
+          content: 'Request to convert was not successful'
+        })
+      }
+      
+    },
+    fail:  async (res) => {
+      my.alert({
+        title: 'Error',
+        content: res.data.message
+      })
+    }
+    });
+  },
+  
+// Get Supported Codes
+  async getSupportedCodes(){
+    my.request({
+      url: `${BASE_URL}codes`,
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'x-rapidapi-key': RAPIDAPI_KEY
+    },
+    success: async (res) => {
+      const resData = res.data
+      if(resData.code == 0){
+        const supportedCodes = resData.supported_codes
+        this.setData({
+          supported_codes: supportedCodes
+        })
+      }else{
+        my.alert({
+          title: 'Error',
+          content: 'Request to convert was not successful'
+        })
+      }
+      
+    },
+    fail:  async (res) => {
+      my.alert({
+        title: 'Error',
+        content: res.data.message
+      })
+    }
+    });
+  },
+
 });
