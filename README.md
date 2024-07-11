@@ -6,7 +6,7 @@ Set Up
 
 Requirement
 1. Have an account on the Mini App portal https://mpesaminiapps.safaricom.co.ke/console/settings?wsid=3459900002553475
-2. Download and iNSTALL THE Miniprogram Studio on your preferred environment
+2. Download and install the Miniprogram Studio on your preferred environment
 3. Open your project on the studio
 
 Ensure you have node installed. If not follow https://nodejs.org/en/download/package-manager to install.
