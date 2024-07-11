@@ -1,15 +1,67 @@
-<view>
+<view class="root_container">
+
+  <!-- FROM CONTAINER-->
+  <view class="from_main_container">
+    <view>FROM:</view>
+    <view class="section">
+      <view class="section-picker">
+      <picker onChange="bindPickerBaseChange" value="{{baseCurrencyIndex}}" range="{{supported_codes}}" range-key="name">
+        <view class="picker">
+          {{supported_codes[baseCurrencyIndex].name}} - {{supported_codes[baseCurrencyIndex].code}}
+        </view>
+      </picker>
+      <ant-icon
+  data-id="icon"
+  type="DownOutline"
+  style="font-size: 18px;"
+/>
+    </view>
+    <view class="input">
+      <input class="input-form" type="number" onBlur="handleAmountChange" maxlength="5" value={{amount}} placeholder="--" />
+    </view>
+    </view>
+  </view>
+ 
+
+   <!-- TO CONTAINER-->
+  <view class="to_main_container">
+    <view>TO:</view>
+
+    <view class="section">
+      <view class="section-picker">
+      <picker onChange="bindPickerTargetChange" value="{{targetCurrencyIndex}}" range="{{supported_codes}}" range-key="name">
+        <view class="picker">
+          {{supported_codes[targetCurrencyIndex].name}} -  {{supported_codes[targetCurrencyIndex].code}}
+        </view>
+      </picker>
+      <ant-icon
+      data-id="icon"
+      type="DownOutline"
+      style="font-size: 18px;"
+    />
+    </view>
+    <view class="input">
+      <input class="input-form" type="number" disabled maxlength="5" placeholder="--" value={{convertedAmount}} />
+    </view>
+    </view>
+  </view>
+
+  <!--exchange rates container-->
+  <view>
+    <view class="view_exchange_rate">Exchange currency rate: {{amount}} {{supported_codes[baseCurrencyIndex].code}}  = {{convertedAmount}} {{supported_codes[targetCurrencyIndex].code}}</view>
+    <view class="view_base_currency">BASE CURRENCY: {{supported_codes[baseCurrencyIndex].code}}</view>
+  </view>
+
   <ant-list header="Other Exchange Rates" radius="{{ radius }}">
     <view a:for="{{ exchangeRates }}">
       <view a:if="{{ index == 0 }}">
         <ant-list-item image="UnorderedListOutline" arrow="right" class="first-index">
-          {{item.name}}
-          {{item.value}}
+          {{item.name}} - {{item.rate}}
         </ant-list-item>
       </view>
       <view a:else>
-        <ant-list-item image="UnorderedListOutline" arrow="right">
-          {{item.name}} {{item.value}}
+        <ant-list-item image="UnorderedListOutline" arrow="right" class="list_item_2">
+          {{item.name}}  - {{item.rate}}
         </ant-list-item>
       </view>
     </view>
