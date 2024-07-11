@@ -1,2 +1,0 @@
-
-## CURRENCY CO
