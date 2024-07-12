@@ -58,9 +58,7 @@ Page({
   },
 
   mockConvertedRates(){
-    const convert_result = {"base": "USD",
-    "target": "BBD",
-    "rate": 2}
+    const convert_result = {"base": "USD", "target": "BBD", "rate": 2}
     this.setData({
       currentExchangeRate: convert_result.rate
     })
@@ -728,26 +726,25 @@ Page({
       "ZMW": 0.1967
   }
 
-  const objectToMap = obj => new Map(Object.entries(obj));
+	const objectToMap = obj => new Map(Object.entries(obj));
 
-        const arr = Array.from(objectToMap(rates), ([currency, rate]) => ({
-          currency,
-          rate
-        }));
-        
-        const newArray = arr.map(item => {
-          const currencyInfo = this.data.supported_codes.find(code => code.code === item.currency);
-          return {
-            currency: item.currency,
-            name: currencyInfo ? currencyInfo.name : "Unknown", 
-            rate: item.rate
-          };
-        });
+	const arr = Array.from(objectToMap(rates), ([currency, rate]) => ({
+	  currency,
+	  rate
+	}));
+	
+	const newArray = arr.map(item => {
+	  const currencyInfo = this.data.supported_codes.find(code => code.code === item.currency);
+	  return {
+		currency: item.currency,
+		name: currencyInfo ? currencyInfo.name : "Unknown", 
+		rate: item.rate
+	  };
+	});
 
-
-        this.setData({
-          exchangeRates: newArray
-        });
+	this.setData({
+	  exchangeRates: newArray
+	});
   },
 
    //get currency exchange rates
