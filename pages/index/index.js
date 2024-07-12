@@ -750,6 +750,7 @@ Page({
         });
   },
 
+   //get currency exchange rates
   getCurrencyExchangeRates() {
     console.log("URL" + BASE_URL);
 
